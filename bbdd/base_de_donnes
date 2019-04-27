@@ -1,0 +1,26 @@
+CREATE DATABASE IF NOT EXISTS symfony_backfront;
+USE symfony_backfront;
+
+CREATE TABLE users(
+  id       int(255) auto_increment not null,
+  role     VARCHAR (20),
+  name     VARCHAR (180),
+  surname  VARCHAR (255),
+  email    VARCHAR (255),
+  password VARCHAR (255),
+  created_at  datetime,
+  CONSTRAINT  pk_users PRIMARY KEY(id)
+)ENGINE=InnoDb;
+
+CREATE TABLE tasks(
+  id           INT (255) auto_increment not null,
+  user_id      INT (255) not null,
+  title        VARCHAR (255),
+  description  text,
+  status       VARCHAR (100),
+  created_at   datetime,
+  updated_at   datetime,
+  CONSTRAINT pk_tasks PRIMARY KEY (id),
+  CONSTRAINT pk_tasks_users FOREIGN KEY(user_id) REFERENCES users(id)
+
+)ENGINE=InnoDb;
