@@ -1,0 +1,2 @@
+backend_default:
+    resource: "@BackendBundle/Resources/config/routing/default.yml"
